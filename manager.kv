@@ -1,0 +1,91 @@
+ScreenManager:
+    Sock:
+    Chat:
+    
+
+
+<Sock>:
+    name:'1'
+    id: Sock
+    ip_w:ip
+    user_w:user
+    port_w:port
+    MDTextField :
+        id:ip
+        text: '127.0.0.1'
+        hint_text: "IP"
+        pos_hint: {"x" : .3,"y" : .6}
+        size_hint: 0.4,0.1
+        max_text_length:15
+        halign: 'center'
+    MDTextField :
+        id:port
+        text: '65535'
+        hint_text: "PORT"
+        pos_hint: {"x" : .3,"y" : .5}
+        size_hint: 0.4,0.1
+        max_text_length:15
+        halign: 'center'
+    
+    MDTextField :
+        id:user
+        text: 'Steve'
+        hint_text: "User"
+        pos_hint: {"x" : .3,"y" : .7}
+        size_hint: 0.4,0.1
+        max_text_length:15
+        halign: 'center'
+
+    MDRectangleFlatButton:
+        text: 'Skip'
+        pos_hint: {'center_x': 0.5,'center_y':0.2}
+        on_press:
+            Sock.verify()
+
+<Chat>:
+    name:'2'
+    id:Chat
+    message_w: message
+    chat_w: t_i
+    
+    TextInput:
+        id: t_i
+        #disabled: True
+        pos_hint: {"x" : .3,"y" : .3}
+        background_color: (229,152,102,0)
+        size_hint: 0.5,0.6
+        halign: 'center'
+        disabled:True
+        disabled_foreground_color: (211, 84, 0, 1)
+
+    MDRaisedButton:
+        text: "Send"
+        pos_hint: {'x':0.8,'y':0.2}
+       
+        on_press: Chat.send()
+
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x':0.2,'center_y':0.2}
+        on_press:
+            root.manager.current = '1'
+            root.manager.transition.direction = 'right'
+
+    MDRectangleFlatButton:
+        text: 'Start'
+        pos_hint: {'center_x':0.2,'center_y':0.1}
+        on_press:
+            disabled:True
+            Chat.start()
+            
+        
+
+    MDTextField :
+        id:message
+        hint_text: "Send Message"
+        pos_hint: {"x" : .3,"y" : .15}
+        size_hint: 0.4,0.1
+        halign: 'center'
+        
+    
+
